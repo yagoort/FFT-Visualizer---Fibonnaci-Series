@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fibonacci Calculator</h1>
+        <form method="post">
+            <label for="n">Enter n (non-negative integer):</label>
+            <input type="number" id="n" name="n" min="0" value="{{ n }}" required>
+            <div style="margin: 12px 0;">
+                <label><input type="radio" name="mode" value="single" {% if mode == 'single' %}checked{% endif %}> Single Fibonacci number (F(n))</label>
+                <label style="margin-left: 18px;"><input type="radio" name="mode" value="list" {% if mode == 'list' %}checked{% endif %}> List up to n</label>
+            </div>
+            <button type="submit">Calculate</button>
+        </form>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if result is not none %}
+            <div class="fib-result-outer-box">
+                <h2>Result:</h2>
+                {% if mode == 'single' %}
+                    <div class="fib-sequence-box"><span class="fib-sequence-item"><strong>Fibonacci({{ n }}) = {{ result }}</strong></span></div>
+                {% else %}
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                        <span>Fibonacci sequence up to n:</span>
+                        {% if download_ready %}
+                            <a href="/download_fibonacci_csv?n={{ n }}" class="download-btn">Download CSV</a>
+                        {% endif %}
+                    </div>
+                    <div class="fib-sequence-box">
+                        {% for num in result %}
+                            <span class="fib-sequence-item">{{ num }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div style="margin-top: 32px;">
+            <a href="/">&#8592; Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

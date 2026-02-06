@@ -1,0 +1,243 @@
+/* Download button for Fibonacci CSV */
+.download-btn {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-left: 18px;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.04);
+}
+.download-btn:hover {
+  background: #e07c1b;
+}
+/* Outer box for Fibonacci result */
+.fib-result-outer-box {
+  background: #f3f6fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.06);
+  padding: 24px 18px 18px 18px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+/* Fibonacci sequence structured display */
+.fib-sequence-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.04);
+  padding: 16px;
+  margin-top: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.fib-sequence-item {
+  background: #f6f8fa;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 1em;
+  color: #25343F;
+  word-break: break-all;
+}
+/* Landing page hero section */
+.landing-hero {
+  background: linear-gradient(90deg, #FF9B51 0%, #BFC9D1 100%);
+  border-radius: 12px;
+  padding: 36px 32px 32px 32px;
+  margin-bottom: 36px;
+  color: #25343F;
+  box-shadow: 0 4px 24px rgba(37,52,63,0.10);
+  text-align: center;
+}
+.landing-hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #25343F;
+}
+.landing-subtitle {
+  font-size: 1.25em;
+  margin-bottom: 28px;
+  color: #25343F;
+}
+.landing-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+.landing-option {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.06);
+  padding: 22px 18px 18px 18px;
+  min-width: 200px;
+  max-width: 240px;
+  flex: 1 1 200px;
+  margin: 8px 0;
+  text-decoration: none;
+}
+
+.landing-option {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+.landing-option h2 {
+  color: var(--color-accent);
+  font-size: 1.15em;
+  margin-bottom: 8px;
+}
+.landing-option p {
+  color: #25343F;
+  font-size: 1em;
+  margin: 0;
+}
+/* FFT options box and label */
+.fft-options-box {
+  background: #f6f8fa;
+  border-radius: 8px;
+  padding: 18px 24px 16px 24px;
+  margin-bottom: 24px;
+  border: 1px solid #BFC9D1;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.04);
+}
+.fft-options-label {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 1.15em;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+.fft-options-list label {
+  display: block;
+  font-size: 1.08em;
+  margin-bottom: 0.2em;
+  color: var(--color-text);
+}
+/* Modern palette-based theme for FFT Visualizer */
+:root {
+  --color-bg: #EAEFEF;
+  --color-panel: #BFC9D1;
+  --color-text: #25343F;
+  --color-accent: #FF9B51;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(37,52,63,0.08);
+  padding: 32px 40px 40px 40px;
+}
+
+h1, h2 {
+  color: var(--color-text);
+}
+
+form {
+  background: var(--color-panel);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.04);
+}
+
+input[type="text"], input[type="file"] {
+  border: 1px solid #BFC9D1;
+  border-radius: 4px;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  width: 100%;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--color-text);
+}
+
+button, input[type="submit"] {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+button:hover, input[type="submit"]:hover {
+  background: #e07c1b;
+}
+
+fieldset {
+  border: 1px solid #BFC9D1;
+  border-radius: 6px;
+  padding: 12px 18px;
+  background: #f6f8fa;
+}
+
+
+legend {
+  color: var(--color-accent);
+  font-weight: bold;
+  background: #f6f8fa;
+  padding: 2px 12px 2px 12px;
+  border-radius: 4px 4px 0 0;
+  margin-left: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  display: inline-block;
+  position: static;
+  z-index: auto;
+}
+
+.plot {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(37,52,63,0.04);
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.error {
+  color: #c0392b;
+  background: #fff0ee;
+  border: 1px solid #ffb3a7;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin-top: 10px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.loader {
+  border: 6px solid #BFC9D1;
+  border-top: 6px solid var(--color-accent);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

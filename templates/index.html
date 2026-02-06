@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FFT Visualizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="landing-hero">
+            <h1>Welcome to FFT Visualizer</h1>
+            <p class="landing-subtitle">Analyze, process, and visualize your signals with ease.</p>
+            <div class="landing-options">
+                <div class="landing-option">
+                    <h2>Signal Processing Tools</h2>
+                    <p>Use FFT and other tools to analyze your data.</p>
+                </div>
+                <div class="landing-option">
+                    <h2>Upload or Enter Data</h2>
+                    <p>Input your signal directly or upload a CSV file for instant analysis.</p>
+                </div>
+                <div class="landing-option">
+                    <h2>Visualization</h2>
+                    <p>View plots of your input signal and its frequency spectrum.</p>
+                </div>
+                <div class="landing-option">
+                    <h2>Example Signals</h2>
+                    <p>Try out built-in example signals to see the visualizer in action.</p>
+                </div>
+            </div>
+        </div>
+        <h1>FFT Visualizer</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label for="signal">Enter signal (comma-separated numbers):</label><br>
+            <input type="text" id="signal" name="signal" value="{{ input_signal }}">
+            <button type="submit">Visualize</button>
+            <span style="margin-left:20px;">Examples:
+                {% for name, ex in example_signals.items() %}
+                    <button type="button" onclick="document.getElementById('signal').value='{{ ex }}'">{{ name }}</button>
+                {% endfor %}
+            </span>
+            <br><br>
+            <label for="csvfile">Or upload CSV file:</label>
+            <input type="file" id="csvfile" name="csvfile" accept=".csv">
+            <br><br>
+            <div class="fft-options-box">
+                <div class="fft-options-label">FFT Visualization Options</div>
+                <div class="fft-options-list">
+                      <label><input type="checkbox" name="subtract_mean" {% if request.form.subtract_mean %}checked{% endif %}> Subtract mean before FFT</label>
+                      <label><input type="checkbox" name="normalize_fft" {% if request.form.normalize_fft %}checked{% endif %}> Normalize FFT output</label>
+                      <label><input type="checkbox" name="log_scale" {% if request.form.log_scale %}checked{% endif %}> Log scale magnitude spectrum</label>
+                </div>
+            </div>
+        </form>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <div style="margin: 20px 0;">{{ math_explanation|safe }}</div>
+
+        <!-- Loading animation placeholder -->
+        <div id="loading" class="loading" style="display:none;">
+            <div class="loader"></div>
+            <span style="margin-left:18px; color:var(--color-text); font-size:1.1em;">Processing...</span>
+        </div>
+
+        {% if plot_url %}
+            <div class="plot">
+                <h2>Input Signal</h2>
+                <img src="data:image/png;base64,{{ plot_url }}" alt="Input Signal Plot">
+            </div>
+        {% endif %}
+        {% if freq_url %}
+            <div class="plot">
+                <h2>FFT Magnitude Spectrum</h2>
+                <img src="data:image/png;base64,{{ freq_url }}" alt="FFT Spectrum Plot">
+            </div>
+        {% endif %}
+        {% if real_url %}
+            <div class="plot">
+                <h2>FFT Real Part</h2>
+                <img src="data:image/png;base64,{{ real_url }}" alt="FFT Real Part Plot">
+            </div>
+        {% endif %}
+        {% if imag_url %}
+            <div class="plot">
+                <h2>FFT Imaginary Part</h2>
+                <img src="data:image/png;base64,{{ imag_url }}" alt="FFT Imaginary Part Plot">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
