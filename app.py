@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, render_template, request, send_file, jsonify
 import csv
 from io import TextIOWrapper
+import os
 
 from signal_processing import (
     SignalProcessor, SignalPlotter, ImageEncoder, signal_from_string,
@@ -149,4 +150,4 @@ def download_fibonacci_csv():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
